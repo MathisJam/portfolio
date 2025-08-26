@@ -6,123 +6,208 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Portfolio - Junior Software Developer</title>
 
-	<!-- 1. Google Fonts first -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-	<!-- 2. Tailwind with modified config -->
+	<!-- 1. Tailwind first -->
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script>
 		tailwind.config = {
-			corePlugins: {
-				fontFamily: false,
+			theme: {
+				fontFamily: {
+					'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+				}
+
 			}
 		}
 	</script>
 
+	<!-- 2. Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Exo2&display=swap" rel="stylesheet"> -->
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Exo2&display=swap" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap" rel="stylesheet">
+
+
+
 	<!-- 3. CSS custom -->
 	<style>
-		:root {
-			font-family: 'Inter', sans-serif;
+		.font-Exo2 {
+			font-family: 'Exo 2', bold !important;
+			font-weight: 500;
 		}
 	</style>
 	<link rel="stylesheet" href="style.css">
 </head>
 
 
-<body>
+<body class="text-gray-800 font-sans snap-y snap-mandatory overflow-y-scroll scroll-smooth">
+	<!-- Vidéo en arrière-plan -->
+	<video autoplay muted loop playsinline class="fixed inset-0 w-full h-full object-cover z-[-1]">
+		<source src="images/f.mp4" type="video/mp4">
+	</video>
+
+	<!-- Image de fallback (seulement si la vidéo ne charge pas) -->
+	<img src="images/abstract-gradient-background.jpg" alt="Gradient Background" class="absolute inset-0 w-full h-full object-cover z-0 hidden">
 
 
 	<!-- HEADER -->
-	<header class="bg-gradient-to-r from-red-700 to-red-700 text-white text-center p-12">
-		<h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fadeSlideZoom">
-			Mathis Jameau
-		</h1>
-		<p class="text-lg md:text-xl mb-6 animate-fadeSlideZoom delay-200">
-			Junior Software Developer
-		</p>
-		<nav class="space-x-4">
-			<a href="#about" class="px-4 py-2 bg-white text-red-700 font-semibold rounded hover:bg-red-100 transition">À
-				propos</a>
-			<a href="#projects"
-				class="px-4 py-2 bg-white text-red-700 font-semibold rounded hover:bg-red-100 transition">Projets</a>
-			<a href="#contact"
-				class="px-4 py-2 bg-white text-red-700 font-semibold rounded hover:bg-red-100 transition">Contact</a>
-		</nav>
+	<header class="relative min-h-screen snap-start text-white text-center flex flex-col justify-center items-center overflow-hidden font-Exo2">
+
+		<!-- Contenu du header -->
+		<div class="relative z-10">
+			<h1 class="text-4xl md:text-5xl font-bold text-gray-800 text-outline mb-4 animate-fadeSlideZoom">
+				Mathis Jameau
+			</h1>
+			<p class="text-lg md:text-xl mb-12 animate-fadeSlideZoom text-gray-800 delay-200">
+				Junior Software Developer
+			</p>
+			<nav class="flex flex-col" style="gap: 0.5rem">
+				<a href="#about" class="btn-grad text-gray-800 w-64 mx-auto h-10 flex items-center justify-center">À propos</a>
+				<a href="#projects" class="btn-grad text-gray-800 w-64 mx-auto h-10 flex items-center justify-center">Projets</a>
+				<a href="#contact" class="btn-grad text-gray-800 w-64 mx-auto h-10 flex items-center justify-center">Contact</a>
+			</nav>
+		</div>
 	</header>
 
+
 	<!-- ABOUT -->
-	<section id="about" class="max-w-4xl mx-auto p-12 mt-8 bg-white rounded-2xl shadow-lg">
-		<h2 class="text-3xl font-bold mb-6 border-b-2 border-red-500 w-32">À propos</h2>
-		<p class="text-gray-700 text-lg">
-			Je suis un développeur junior en apprentissage de <span class="font-semibold">HTML, CSS, JavaScript et
-				React</span>.
-			J’adore créer des projets pratiques pour progresser et apprendre de nouvelles technologies.
-		</p>
-		<div class="mt-6">
-			<button class="px-6 py-2 bg-red-700 text-white font-bold rounded-lg hover:bg-red-800 transition">Télécharger
-				mon CV</button>
+	<section id="about" class="min-h-screen snap-start py-24">
+		<div class="max-w-5xl mx-auto rounded-2xl shadow-lg overflow-hidden">
+			<div class="relative w-full h-full">
+				<!-- Background avec overlay -->
+				<div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/abstract-gradient-background.jpg');">
+				</div>
+				<div class="absolute inset-0 bg-gray-50/50"></div>
+
+				<!-- Contenu -->
+				<div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center p-12">
+					<!-- Photo à gauche -->
+					<div class="flex justify-center md:justify-start">
+						<img src="images/bg1.jpg" alt="Photo de Mathis Jameau" class="w-full h-full object-cover shadow-xl hover:scale-105 transition duration-300">
+					</div>
+
+					<div>
+						<h2 class="text-3xl font-bold  text-gray-800 mb-6 inline-block border-b-2 border-pink-200">
+							À propos
+						</h2>
+						<p class="text-gray-700 text-lg leading-relaxed mt-4">
+							Je suis un développeur junior en apprentissage de
+							<span class="font-semibold">HTML, CSS, JavaScript et React</span>.
+							J’adore créer des projets pratiques pour progresser et apprendre de nouvelles technologies.
+						</p>
+						<div class="mt-6">
+							<button class="btn-grad text-gray-800 font-bold">
+								Télécharger mon CV
+							</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
 	</section>
 
+
+
 	<!-- PROJECTS -->
-	<section id="projects" class="max-w-6xl mx-auto p-12 mt-12">
-		<h2 class="text-3xl font-bold mb-8 text-center border-b-2 border-red-500 w-40 mx-auto">Mes projets</h2>
-		<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-			<!-- Projet 1 -->
-			<div class="bg-white rounded-2xl shadow-lg p-6 hover:scale-105 transform transition duration-300">
-				<h3 class="text-xl font-semibold mb-3">Projet 1</h3>
-				<p class="text-gray-700 mb-4">Une petite description rapide de ce projet.</p>
-				<a href="#"
-					class="px-4 py-2 bg-red-700 text-white font-semibold rounded hover:bg-red-700 transition">Voir
-					le code</a>
-			</div>
-			<!-- Projet 2 -->
-			<div class="bg-white rounded-2xl shadow-lg p-6 hover:scale-105 transform transition duration-300">
-				<h3 class="text-xl font-semibold mb-3">Projet 2</h3>
-				<p class="text-gray-700 mb-4">Une autre description.</p>
-				<a href="#"
-					class="px-4 py-2 bg-red-700 text-white font-semibold rounded hover:bg-red-700 transition">Voir
-					le code</a>
-			</div>
-			<!-- Projet 3 -->
-			<div class="bg-white rounded-2xl shadow-lg p-6 hover:scale-105 transform transition duration-300">
-				<h3 class="text-xl font-semibold mb-3">Projet 3</h3>
-				<p class="text-gray-700 mb-4">Description d’un petit projet.</p>
-				<a href="#"
-					class="px-4 py-2 bg-red-700 text-white font-semibold rounded hover:bg-red-700 transition">Voir
-					le code</a>
+	<section id="projects" class="min-h-screen snap-start py-24">
+		<div class="max-w-5xl mx-auto rounded-2xl shadow-lg overflow-hidden">
+			<div class="relative w-full h-full">
+				<!-- Background avec overlay -->
+				<div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/abstract-gradient-background.jpg');">
+				</div>
+				<div class="absolute inset-0 bg-gray-50/50"></div>
+
+				<!-- Contenu -->
+				<div class="relative z-10 p-12">
+					<h2 class="text-3xl font-bold mb-8 text-center text-gray-800 border-b-2 border-pink-200 w-31 mx-auto">
+						Mes projets
+					</h2>
+					<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+						<!-- Projet 1 -->
+						<div class="rounded-2xl shadow-lg p-6 hover:scale-105 transform transition duration-300 flex flex-col justify-between">
+							<!-- Added flex flex-col and justify-between -->
+							<div>
+								<h3 class="text-xl font-semibold text-gray-800 mb-3">Projet 1</h3>
+								<p class="text-gray-700 mb-4">Une petite description rapide de ce projet.</p>
+							</div>
+							<a href="#" class="btn-grad text-gray-800 font-bold text-center">Voir le code</a>
+						</div>
+						<!-- Projet 2 -->
+						<div class="rounded-2xl shadow-lg p-6 hover:scale-105 transform transition duration-300 flex flex-col justify-between">
+							<div>
+								<h3 class="text-xl font-semibold text-gray-800 mb-3">Projet 2</h3>
+								<p class="text-gray-700 mb-4">Une autre description.</p>
+							</div>
+							<a href="#" class="btn-grad text-gray-800 font-bold text-center">Voir le code</a>
+						</div>
+						<!-- Projet 3 -->
+						<div class="rounded-2xl shadow-lg p-6 hover:scale-105 transform transition duration-300 flex flex-col justify-between">
+							<div>
+								<h3 class="text-xl font-semibold text-gray-800 mb-3">Projet 3</h3>
+								<p class="text-gray-700 mb-4">Description d'un petit projet.</p>
+							</div>
+							<a href="#" class="btn-grad text-gray-800 font-bold text-center">Voir le code</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- CONTACT -->
-	<section id="contact" class="max-w-4xl mx-auto p-12 mt-12 bg-white rounded-2xl shadow-lg mb-12">
-		<h2 class="text-3xl font-bold mb-6 border-b-2 border-red-500 w-32">Contact</h2>
-		<p class="text-gray-700 mb-4">Vous pouvez me joindre ici :</p>
-		<ul class="text-gray-700 space-y-2">
-			<li>Email : <a href="mailto:mathis.jameau3@gmail.com"
-					class="text-red-700 hover:underline">mathis.jameau3@gmail.com</a>
-			</li>
-			<li>GitHub : <a href="https://github.com/MathisJam" target="_blank"
-					class="text-red-700 hover:underline">github.com/MathisJam</a></li>
-			<li>LinkedIn : <a href="https://www.linkedin.com/in/mathis-jameau-0a55b3380/" target="_blank"
-					class="text-red-700 hover:underline">https://www.linkedin.com/in/mathis-jameau-0a55b3380/</a>
-			</li>
-		</ul>
-		<div class="mt-6">
-			<button class="px-6 py-2 bg-red-700 text-white font-bold rounded-lg hover:bg-red-800 transition">Envoyer
-				un
-				message</button>
+	<section id="contact" class="min-h-screen snap-start py-24">
+		<div class="max-w-5xl mx-auto rounded-2xl shadow-lg overflow-hidden">
+			<div class="relative w-full h-full">
+				<!-- Background avec overlay -->
+				<div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/abstract-gradient-background.jpg');">
+				</div>
+				<div class="absolute inset-0 bg-gray-50/50"></div>
+
+				<!-- Contenu -->
+				<div class="relative z-10 p-12">
+					<h2 class="text-3xl font-bold mb-8 text-center text-gray-800 border-b-2 border-pink-200 w-31 mx-auto">
+						Contact
+					</h2>
+					<p class="text-gray-700 mb-4 font-bold">Retrouvez moi ici :</p>
+					<ul class="text-gray-700 space-y-2">
+						<li>Email : <a href="mailto:mathis.jameau3@gmail.com" class="text-pink-400 hover:underline">mathis.jameau3@gmail.com</a>
+						</li>
+						<li>GitHub : <a href="https://github.com/MathisJam" target="_blank" class="text-pink-400 hover:underline">github.com/MathisJam</a>
+						</li>
+						<li>LinkedIn : <a href="https://www.linkedin.com/in/mathis-jameau-0a55b3380/" target="_blank" class="text-pink-400 hover:underline">linkedin.com/in/mathis-jameau</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</section>
 
 	<!-- FOOTER -->
-	<footer class="text-center p-6 bg-gradient-to-r from-red-700 to-purple-700 text-white">
+	<footer class="text-center p-6 text-cyan-900">
 		<p>© 2025 - Mathis Jameau | Portfolio Junior Software Developer</p>
 	</footer>
 
+	<script>
+		// Observer pour le fade in/out des sections
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+				} else {
+					// Retire la classe quand la section n'est plus visible
+					entry.target.classList.remove('visible');
+				}
+			});
+		}, {
+			threshold: 0.2, // Augmente le seuil pour un déclenchement plus tard
+			rootMargin: '-50px' // Ajoute une marge négative pour un déclenchement plus précis
+		});
+
+		// Observer toutes les sections
+		document.querySelectorAll('section').forEach((section) => {
+			observer.observe(section);
+		});
+	</script>
 </body>
 
 </html>
