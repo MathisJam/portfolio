@@ -1,13 +1,9 @@
-/* Force Inter font everywhere
-html, body {
-    font-family: 'Inter', sans-serif !important;
+.font-Exo2 {
+    font-family: 'Exo 2', bold !important;
+    font-weight: 500;
 }
 
-*,
-*::before,
-*::after {
-    font-family: 'Inter', sans-serif !important;
-} */
+/* Style text-outline */
 
 .text-shadow {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
@@ -38,10 +34,6 @@ html, body {
   background-image: linear-gradient(135deg, #81FFEF 10%, #f067b4 100%);
 }
 
-
-.btn-grad {
-	background-image: linear-gradient(to right, #c8faf3 0%, #ffb9ff  51%, #f067b4 100%)
-}
 .btn-grad {
    margin: 10px;
    padding: 15px 45px;
@@ -60,30 +52,6 @@ html, body {
    color: #fff;
    text-decoration: none;
  }
-
-/*
-.btn-grad {
-	background-image: linear-gradient(to right, #ff6e7f 0%, #bfe9ff  51%, #ff6e7f  100%)
-}
-.btn-grad {
-   margin: 10px;
-   padding: 15px 45px;
-   text-align: center;
-   text-transform: uppercase;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
- }
-
- .btn-grad:hover {
-   background-position: right center;
-   color: #fff;
-   text-decoration: none;
- }
- */
 
 /* Animation fade + slide + zoom */
 @keyframes fadeSlideZoom {
