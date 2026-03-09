@@ -46,10 +46,10 @@ export default function About() {
 						À propos
 					</motion.h2>
 					<p className="leading-relaxed text-lg" style={{ color: GREEN, opacity: 0.85 }}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-						aliquip ex ea commodo consequat.
+						Étudiant à 42 Paris, je me spécialise dans le développement fullstack et la cybersécurité.
+						Je m&apos;intéresse particulièrement à l&apos;OSINT, à la sécurité offensive et à la conception d&apos;applications web robustes.
+						<br /><br />
+						Je suis actuellement disponible pour des opportunités de stage ou d&apos;alternance.
 					</p>
 				</motion.div>
 			</div>

@@ -75,12 +75,9 @@ const floatingElements: FloatingEl[] = [
 	{ shape: "limeslice", top: "75%", left: "82%", size: 52, floatY: 18, rotateDeg: 360, duration: 22, delay: 1 },
 	{ shape: "sparkle", top: "85%", left: "44%", size: 40, floatY: 16, rotateDeg: 180, duration: 17, delay: 0.8 },
 	{ shape: "flower", top: "20%", left: "20%", size: 44, floatY: 18, rotateDeg: 270, duration: 21, delay: 0.3 },
-	{ shape: "ring", top: "60%", left: "55%", size: 56, floatY: 14, rotateDeg: 180, duration: 15, delay: 2.2 },
 	{ shape: "flower", top: "88%", left: "65%", size: 36, floatY: 20, rotateDeg: 360, duration: 23, delay: 1.8 },
-	{ shape: "ring", top: "30%", left: "70%", size: 42, floatY: 16, rotateDeg: 90, duration: 13, delay: 0.7 },
 	{ shape: "flower", top: "55%", left: "30%", size: 30, floatY: 22, rotateDeg: 360, duration: 16, delay: 3.5 },
 	{ shape: "sparkle", top: "15%", left: "60%", size: 28, floatY: 10, rotateDeg: 180, duration: 11, delay: 1.2 },
-	{ shape: "flower", top: "70%", left: "40%", size: 48, floatY: 18, rotateDeg: 270, duration: 19, delay: 2.8 },
 	{ shape: "limeslice", top: "35%", left: "15%", size: 38, floatY: 20, rotateDeg: 360, duration: 24, delay: 0.9 },
 ];
 
@@ -211,16 +208,18 @@ export default function AnimatedBackground({ color, bgColor }: { color: string; 
 				/>
 			))}
 
-			{floatingElements.map((el, i) => (
-				<FloatingShape
-					key={i}
-					el={el}
-					color={color}
-					mouseX={mouseX}
-					mouseY={mouseY}
-					containerRef={containerRef}
-				/>
-			))}
+			<div className="hidden md:contents">
+				{floatingElements.map((el, i) => (
+					<FloatingShape
+						key={i}
+						el={el}
+						color={color}
+						mouseX={mouseX}
+						mouseY={mouseY}
+						containerRef={containerRef}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }

@@ -34,7 +34,7 @@ export default function Contact() {
 					className="max-w-sm text-lg"
 					style={{ color: GREEN, opacity: 0.8 }}
 				>
-					Envie de collaborer ou d&apos;en savoir plus ? Retrouvez-moi ici :
+					Disponible pour un stage ou une alternance — n&apos;hésitez pas à me contacter :
 				</motion.p>
 
 				<motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-8">
