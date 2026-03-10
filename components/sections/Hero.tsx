@@ -97,7 +97,7 @@ export default function Hero() {
 						className="text-base md:text-lg max-w-lg leading-relaxed"
 						style={{ color: "rgba(255,255,255,0.6)" }}
 					>
-						Étudiant à 42 Paris — Cybersécurité, OSINT & développement web.
+						Fullstack, Cybersécurité & OSINT.
 					</motion.p>
 
 					<motion.div
