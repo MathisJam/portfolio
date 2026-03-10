@@ -48,7 +48,7 @@ export default function PageIntro() {
 			{visible && (
 				<motion.div
 					className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden"
-					style={{ backgroundColor: "#150f2d" }}
+					style={{ backgroundColor: "#000000" }}
 					exit={{ y: "-100%", transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } }}
 				>
 					{/* Background glow */}

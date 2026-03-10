@@ -1,25 +1,30 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import SectionWrapper from "@/components/ui/SectionWrapper";
-import { fadeUp } from "@/lib/variants";
 import { social } from "@/lib/data";
 
-const DARK = "#180c4959";
+const Beams = dynamic(() => import("@/components/ui/Beams"), { ssr: false });
+
 const GREEN = "#5cf964";
-// PageIntro: 1800ms visible + 900ms exit animation
+const EASE = [0.76, 0, 0.24, 1] as [number, number, number, number];
 const INTRO_DURATION = 3100;
 
 const letterVariants: Variants = {
-	hidden: { opacity: 0, y: 50, rotate: -8 },
-	visible: { opacity: 1, y: 0, rotate: 0, transition: { type: "spring" as const, stiffness: 200, damping: 18 } },
+	hidden: { opacity: 0, y: 60, filter: "blur(8px)" },
+	visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: EASE } },
 };
 
 const nameStagger: Variants = {
 	hidden: {},
-	visible: { transition: { staggerChildren: 0.045, delayChildren: 0.1 } },
+	visible: { transition: { staggerChildren: 0.035, delayChildren: 0.1 } },
+};
+
+const fade: Variants = {
+	hidden: { opacity: 0, y: 20 },
+	visible: { opacity: 1, y: 0 },
 };
 
 export default function Hero() {
@@ -34,107 +39,97 @@ export default function Hero() {
 	const anim = ready ? "visible" : "hidden";
 
 	return (
-		<SectionWrapper id="hero" bgColor={DARK} accentColor={GREEN}>
-			<motion.div className="flex flex-col items-center gap-5 text-center px-4">
+		<section
+			id="hero"
+			className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+			style={{ scrollSnapAlign: "start", backgroundColor: "#000" }}
+		>
+			{/* Three.js Beams background */}
+			<Beams
+				beamWidth={3}
+				beamHeight={30}
+				beamNumber={20}
+				lightColor={GREEN}
+				speed={2}
+				noiseIntensity={1.75}
+				scale={0.2}
+				rotation={30}
+			/>
 
-				<motion.p
-					variants={fadeUp}
-					initial="hidden"
-					animate={anim}
-					className="text-sm tracking-widest uppercase font-semibold"
-					style={{ color: GREEN }}
-				>
-					Développeur
-				</motion.p>
+			{/* Content — centered */}
+			<div className="relative z-10 w-full px-6 md:px-16">
+				<motion.div className="flex flex-col items-center text-center gap-5">
 
-				<motion.h1
-					className="text-4xl sm:text-5xl md:text-7xl font-[family-name:var(--font-holtwood)]"
-					style={{ color: GREEN }}
-					variants={nameStagger}
-					initial="hidden"
-					animate={anim}
-				>
-					{Array.from(name).map((char, i) => (
-						<motion.span
-							key={i}
-							variants={letterVariants}
-							style={{ display: "inline-block", whiteSpace: "pre" }}
-						>
-							{char}
-						</motion.span>
-					))}
-				</motion.h1>
-
-				<motion.p
-					variants={fadeUp}
-					initial="hidden"
-					animate={anim}
-					transition={{ delay: 0.15 }}
-					className="text-lg max-w-md"
-					style={{ color: GREEN, opacity: 0.85 }}
-				>
-					Étudiant à 42 Paris — Fullstack, cybersécurité & OSINT.
-				</motion.p>
-
-				<motion.div
-					variants={fadeUp}
-					initial="hidden"
-					animate={anim}
-					transition={{ delay: 0.3 }}
-					className="flex gap-8"
-				>
-					<motion.a
-						href={social.github}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="font-semibold text-sm tracking-widest uppercase"
-						style={{ color: GREEN, borderBottom: "2px solid transparent" }}
-						whileHover={{ y: -2, borderBottomColor: GREEN }}
-						whileTap={{ scale: 0.97 }}
-						transition={{ duration: 0.15 }}
+					<motion.p
+						variants={fade}
+						initial="hidden"
+						animate={anim}
+						transition={{ duration: 0.8, ease: EASE }}
+						className="text-xs tracking-[0.3em] uppercase font-medium"
+						style={{ color: GREEN }}
 					>
-						GitHub ↗
-					</motion.a>
-					<motion.a
-						href={social.linkedin}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="font-semibold text-sm tracking-widest uppercase"
-						style={{ color: GREEN, borderBottom: "2px solid transparent" }}
-						whileHover={{ y: -2, borderBottomColor: GREEN }}
-						whileTap={{ scale: 0.97 }}
-						transition={{ duration: 0.15 }}
+						Développeur fullstack
+					</motion.p>
+
+					<motion.h1
+						className="text-4xl sm:text-6xl md:text-8xl font-[family-name:var(--font-holtwood)] leading-[0.95]"
+						style={{ color: "#fff" }}
+						variants={nameStagger}
+						initial="hidden"
+						animate={anim}
 					>
-						LinkedIn ↗
-					</motion.a>
+						{Array.from(name).map((char, i) => (
+							<motion.span
+								key={i}
+								variants={letterVariants}
+								style={{ display: "inline-block", whiteSpace: "pre" }}
+							>
+								{char}
+							</motion.span>
+						))}
+					</motion.h1>
+
+					<motion.p
+						variants={fade}
+						initial="hidden"
+						animate={anim}
+						transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+						className="text-base md:text-lg max-w-lg leading-relaxed"
+						style={{ color: "rgba(255,255,255,0.6)" }}
+					>
+						Étudiant à 42 Paris — Cybersécurité, OSINT & développement web.
+					</motion.p>
+
+					<motion.div
+						variants={fade}
+						initial="hidden"
+						animate={anim}
+						transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
+						className="flex items-center justify-center gap-8 mt-4"
+					>
+						{[
+							{ label: "GitHub", href: social.github },
+							{ label: "LinkedIn", href: social.linkedin },
+							{ label: "Mon CV", href: "/CV-Mathis Jameau.pdf", download: true },
+						].map((link) => (
+							<motion.a
+								key={link.label}
+								href={link.href}
+								target={link.download ? undefined : "_blank"}
+								rel={link.download ? undefined : "noopener noreferrer"}
+								download={link.download || undefined}
+								className="text-xs tracking-[0.2em] uppercase font-medium"
+								style={{ color: GREEN }}
+								whileHover={{ opacity: 1 }}
+								transition={{ duration: 0.2 }}
+							>
+								{link.label}
+							</motion.a>
+						))}
+					</motion.div>
+
 				</motion.div>
-
-				{/* CV download */}
-				<motion.div
-					variants={fadeUp}
-					initial="hidden"
-					animate={anim}
-					transition={{ delay: 0.45 }}
-					className="flex items-center gap-3 mt-2"
-				>
-					<span className="font-bold text-lg select-none" style={{ color: GREEN }}>→</span>
-
-					<motion.a
-						href="/CV-Mathis Jameau.pdf"
-						download
-						className="font-semibold text-sm tracking-widest uppercase"
-						style={{ color: GREEN, borderBottom: "2px solid transparent" }}
-						whileHover={{ y: -2, borderBottomColor: GREEN }}
-						whileTap={{ scale: 0.97 }}
-						transition={{ duration: 0.15 }}
-					>
-						Mon CV
-					</motion.a>
-
-					<span className="font-bold text-lg select-none" style={{ color: GREEN }}>←</span>
-				</motion.div>
-
-			</motion.div>
-		</SectionWrapper>
+			</div>
+		</section>
 	);
 }

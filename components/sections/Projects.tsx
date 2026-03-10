@@ -1,38 +1,55 @@
 "use client";
 
-import { motion } from "motion/react";
-import SectionWrapper from "@/components/ui/SectionWrapper";
-import ProjectCarousel from "@/components/ui/ProjectCarousel";
-import { fadeUp } from "@/lib/variants";
+import dynamic from "next/dynamic";
+import { projects } from "@/lib/data";
+
+const FlowingMenu = dynamic(() => import("@/components/ui/FlowingMenu"), { ssr: false });
 
 const GREEN = "#5cf964";
-const DARK = "#180c4959";
 
 export default function Projects() {
-	return (
-		<SectionWrapper id="projects" bgColor={DARK} accentColor={GREEN}>
-			<div className="flex flex-col items-center gap-8 w-full max-w-5xl px-6">
-				<motion.h2
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: false, amount: 0.5 }}
-					variants={fadeUp}
-					className="text-3xl font-[family-name:var(--font-holtwood)]"
-					style={{ color: GREEN }}
-				>
-					Projets
-				</motion.h2>
+	const menuItems = projects.map((p) => ({
+		link: p.link,
+		text: p.title,
+		image: p.images[0] || "",
+		description: p.description.replace(/\n/g, " "),
+	}));
 
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: false, amount: 0.2 }}
-					transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-					className="w-full flex justify-center"
-				>
-					<ProjectCarousel accentColor={GREEN} />
-				</motion.div>
+	return (
+		<section
+			id="projects"
+			className="relative h-screen w-full overflow-hidden"
+			style={{ scrollSnapAlign: "start", backgroundColor: "#000" }}
+		>
+			{/* Subtle halo */}
+			<div className="absolute inset-0 pointer-events-none" style={{
+				background: "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(92,249,100,0.12) 0%, transparent 70%)",
+			}} />
+
+			<div className="h-full w-full flex flex-col">
+				{/* Section label — centered, bigger */}
+				<div className="px-8 md:px-16 pt-8 pb-6 flex justify-center">
+					<p
+						className="text-sm md:text-base tracking-[0.3em] uppercase font-medium"
+						style={{ color: GREEN }}
+					>
+						Projets
+					</p>
+				</div>
+
+				{/* FlowingMenu fills remaining space */}
+				<div className="flex-1 relative">
+					<FlowingMenu
+						items={menuItems}
+						speed={15}
+						textColor="#ffffff"
+						bgColor="#000000"
+						marqueeBgColor={GREEN}
+						marqueeTextColor="#000000"
+						borderColor="rgba(255,255,255,0.1)"
+					/>
+				</div>
 			</div>
-		</SectionWrapper>
+		</section>
 	);
 }
