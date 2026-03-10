@@ -13,7 +13,7 @@ export default function About() {
 			style={{ scrollSnapAlign: "start", backgroundColor: "#050505" }}
 		>
 			{/* Subtle halo */}
-			<div className="absolute inset-0 pointer-events-none" style={{
+			<div className="hidden md:block absolute inset-0 pointer-events-none" style={{
 				background: "radial-gradient(ellipse 60% 50% at 70% 50%, rgba(39, 249, 50, 0.16) 0%, transparent 90%)",
 			}} />
 

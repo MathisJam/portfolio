@@ -72,7 +72,7 @@ export default function Hero() {
 					</motion.p>
 
 					<motion.h1
-						className="text-4xl sm:text-6xl md:text-8xl font-[family-name:var(--font-holtwood)] leading-[0.95]"
+						className="text-[2rem] sm:text-6xl md:text-8xl font-[family-name:var(--font-holtwood)] leading-[0.95] whitespace-nowrap"
 						style={{ color: "#fff" }}
 						variants={nameStagger}
 						initial="hidden"
