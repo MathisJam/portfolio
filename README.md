@@ -2,14 +2,16 @@
 
 **[mathisjameau-portfolio.vercel.app](https://mathisjameau-portfolio.vercel.app/)**
 
-Personal portfolio built with Next.js, Tailwind CSS, and Framer Motion.
+Personal portfolio built with Next.js, Tailwind CSS, Motion, Three.js and GSAP.
 
 ## Stack
 
 - **Next.js 16** (App Router)
 - **TypeScript**
 - **Tailwind CSS v4**
-- **Motion (Framer Motion)**
+- **Motion (Framer Motion)** — section animations, staggered reveals, blur-in effects
+- **Three.js / React Three Fiber** — Beams background (custom shaders)
+- **GSAP** — FlowingMenu component
 
 ## Structure
 
@@ -17,20 +19,24 @@ Personal portfolio built with Next.js, Tailwind CSS, and Framer Motion.
 app/            → Pages and global styles
 components/
   sections/     → Hero, About, Skills, Projects, Contact
-  ui/           → Reusable components (SectionWrapper, CursorFollower, AnimatedBackground…)
+  ui/           → Beams (Three.js), FlowingMenu (GSAP), Header, PageIntro, ProjectCard
 lib/
   data.ts       → All static content (skills, projects, links)
   variants.ts   → Framer Motion animation variants
-public/images/  → Profile picture and assets
+public/images/  → Profile picture and project screenshots
 ```
 
 ## Design
 
-- Dark theme — background `#0d0d0d`, section overlay `#180c4959`
-- Accent green `#5cf964` (lime)
+- Dark theme — pure black `#000` / `#050505` backgrounds
+- Accent green `#5cf964`
 - Full-screen sections (100vh) with CSS scroll-snap
-- Lime-shaped cursor follower, floating SVG shapes with mouse repulsion
-- Framer Motion animations (fadeUp, revealUp) retriggered on each scroll
+- Three.js animated beams in Hero section
+- GSAP-powered FlowingMenu for Projects (marquee on hover, descriptions in green)
+- Green radial halos on section backgrounds
+- Side-panel navigation with clip-path circle reveal
+- MJ monogram intro animation (SVG stroke draw)
+- Responsive: mobile-first, separate mobile/desktop layouts where needed
 
 ## Getting Started
 
