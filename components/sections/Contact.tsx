@@ -45,7 +45,7 @@ export default function Contact() {
 					className="text-base md:text-lg leading-relaxed max-w-md"
 					style={{ color: "rgba(255,255,255,0.5)" }}
 				>
-					Disponible pour un stage ou une alternance — n&apos;hésitez pas à me contacter.
+					Disponible pour un stage ou une alternance, n&apos;hésitez pas à me contacter.
 				</motion.p>
 
 				<motion.div variants={fadeUp} className="flex flex-col sm:flex-row justify-center gap-8 mt-4">

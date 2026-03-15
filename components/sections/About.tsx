@@ -52,16 +52,23 @@ export default function About() {
 				</p>
 
 				<h2
-					className="text-4xl md:text-6xl font-[family-name:var(--font-holtwood)] leading-tight"
+					className="text-3xl md:text-5xl font-[family-name:var(--font-holtwood)] leading-tight"
 					style={{ color: "#fff" }}
 				>
-					Étudiant à 42 Paris
+					Qui suis-je ?
 				</h2>
 
 				<p className="leading-relaxed text-base md:text-lg max-w-lg" style={{ color: "rgba(255,255,255,0.6)" }}>
-					Je me spécialise dans le développement fullstack et la cybersécurité.
-					Je m&apos;intéresse particulièrement à l&apos;OSINT, à la sécurité offensive
-					et à la conception d&apos;applications web robustes.
+					Étudiant à 42 Paris et développeur fullstack,
+					je m&apos;intéresse à tout ce qui touche à la cybersécurité,
+					de l&apos;OSINT à la sécurité offensive en passant par les CTF.
+				</p>
+
+				<p className="leading-relaxed text-base md:text-lg max-w-lg" style={{ color: "rgba(255,255,255,0.6)" }}>
+					Ce qui me plaît dans ce métier c&apos;est de pouvoir apprendre
+					quelque chose de nouveau chaque jour. Curieux de nature,
+					j&apos;aime autant construire et créer que chercher les failles
+					d&apos;un code ou d&apos;un système pour l&apos;améliorer.
 				</p>
 
 				<motion.div
