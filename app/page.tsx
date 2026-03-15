@@ -12,9 +12,8 @@ export default function Home() {
 			<PageIntro />
 			<Header />
 			<main
-				className="h-screen overflow-y-scroll"
+				className="h-screen overflow-y-scroll snap-y snap-proximity md:snap-mandatory"
 				style={{
-					scrollSnapType: "y mandatory",
 					overscrollBehaviorY: "contain",
 				}}
 			>
